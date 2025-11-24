@@ -29,17 +29,24 @@ if ($country) {
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 if ($results) {
-    echo "<ul>";
+    echo "<table border='1' cellpadding='5' cellspacing='0'>";
+    echo "<tr>
+            <th>Name</th>
+            <th>Continent</th>
+            <th>Independence Year</th>
+            <th>Head of State</th>
+          </tr>";
     foreach ($results as $row) {
-        echo "<li>"
-            . htmlspecialchars($row['name']) . " — "
-            . htmlspecialchars($row['continent']) . " — "
-            . htmlspecialchars($row['independence_year']) . " — "
-            . htmlspecialchars($row['head_of_state'])
-            . "</li>";
+        echo "<tr>
+                <td>" . htmlspecialchars($row['name']) . "</td>
+                <td>" . htmlspecialchars($row['continent']) . "</td>
+                <td>" . htmlspecialchars($row['independence_year']) . "</td>
+                <td>" . htmlspecialchars($row['head_of_state']) . "</td>
+              </tr>";
     }
-    echo "</ul>";
+    echo "</table>";
 } else {
     echo "<p>No results found.</p>";
 }
+
 ?>
